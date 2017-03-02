@@ -1,0 +1,123 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# https://atom.io/docs/latest/using-atom-basic-customization#cson
+
+'.text.html.js':
+  'EJS Display Tag':
+    'prefix': '%='
+    'body': '<%= $1 %>'
+  'EJS No Display Tag':
+    'prefix': '%'
+    'body': '<% $1 %>'
+  'EJS forEach':
+    'prefix': '%forEach'
+    'body': """
+      <% ${1:collection}.forEach((${2:singleItem}) => { %>
+        <%= ${2:singleItem} %>
+      <%  }) %>
+    """
+  'EJS if':
+    'prefix': '%ejif'
+    'body': """
+      <% if (${1:someCondition}) { %>
+        ${2:Code To Run}
+      <% } %>
+    """
+  'EJS Else If':
+    'prefix': '%ejie'
+    'body': """
+      <% if (${1:someCondition}) { %>
+        ${2:Code To Run}
+      <% } else { %>
+        ${3:Do Something Else}
+      <% } %>
+    """
+  'EJS Else If':
+    'prefix': '%ejie'
+    'body': """
+      <% if (${1:someCondition}) { %>
+        ${2:Code To Run}
+      <% } else { %>
+        ${3:Do Something Else}
+      <% } %>
+    """
+'.source.js':
+  'Express Route':
+    'prefix': 'route'
+    'body': """
+      ${1:expressobject}.${2:verb}('/${3:path}', (req, res, next) => {
+        res.render('${4}');
+      });
+    """
+  'Route Config':
+    'prefix': 'eset'
+    'body': """
+      const express = require('express');
+      const router  = express.Router();
+
+      module.exports = router;
+    """
+  'API Index':
+    'prefix': 'apiindex'
+    'body': """
+      ${1:Model}.find({}, (err, ${2:objects}) => {
+        if (err) { return res.status(500).json(err); }
+
+        return res.status(200).json(${2:objects});
+      });
+    """
+  'API Show':
+    'prefix': 'apishow'
+    'body': """
+      ${1:Model}.findById(${2:paramsname}, (err, ${3:object}) => {
+        if (err)          { return res.status(500).json(err); }
+        if (!${3:object}) { return res.status(404).json(err); }
+
+        return res.status(200).json(${3:object});
+      });
+    """
+  'API Create':
+    'prefix': 'apicreate'
+    'body': """
+      const new${1:object} = new ${1:object}({
+        ${2:field}:${3:value}
+      });
+
+      new${1:object}.save((err, ${4:object}) => {
+        if (err)          { return res.status(500).json(err); }
+        if (${4:object}.errors) { return res.status(400).json(${4:object}); }
+
+        return res.status(200).json(${4:object});
+      });
+    """
+  'Mongoose Model':
+    'prefix': 'model'
+    'body': """
+      const mongoose = require('mongoose');
+      const Schema   = mongoose.Schema;
+
+      const ${1:object}Schema = new Schema({
+
+      });
+
+      const ${1:object} = mongoose.model('${1:object}', ${1:object}Schema);
+      module.exports = ${1:object};
+    """
