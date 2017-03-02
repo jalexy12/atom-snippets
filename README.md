@@ -22,6 +22,8 @@ module.exports = object;
 
 with your cursor in place to change `object` to the model of your choice.
 
+A few of these are still quite buggy, so use with caution. 
+
 ## Installation
 
 Append the contents of this snippets.cson file to ~/.atom/snippets.cson. Have fun
