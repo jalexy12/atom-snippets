@@ -6,7 +6,7 @@ This is my personal atom snippets.cson. These are snippets of code that can be t
 
 For instance:
 
-model<tab> in a file with a `.js` extension creates the following:
+Typing `model<tab>` in a file with a `.js` extension creates the following:
 
 ```
 const mongoose = require('mongoose');
